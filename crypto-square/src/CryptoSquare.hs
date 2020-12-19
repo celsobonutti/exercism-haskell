@@ -1,16 +1,10 @@
 module CryptoSquare (encode) where
 
 import Data.Char (isAlphaNum, toLower)
-import Data.List (genericLength)
+import Data.List (genericLength, transpose)
 
 encode :: String -> String
-encode = unwords . mergeRows . splitInRect . map toLower . filter isAlphaNum
-
-mergeRows :: [String] -> [String]
-mergeRows rows = foldr (zipWith (:)) emptyList rows
-  where
-    width = length . (!! 0) $ rows
-    emptyList = replicate width ""
+encode = unwords . transpose . splitInRect . map toLower . filter isAlphaNum
 
 splitInRect :: String -> [String]
 splitInRect text =
