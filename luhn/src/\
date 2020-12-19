@@ -1,0 +1,30 @@
+module Luhn (isValid) where
+
+import Data.Char (isDigit)
+
+isValid :: String -> Bool
+isValid n =
+    length filtered >= 2 && (rem nSum 10 == 0)     
+    where
+        filtered = filter isDigit n
+
+        
+
+calculateSum :: String -> Int
+calculateSum xs = sum doubledList
+    where
+        doubledList = [x | x <- zip ()  ]
+    
+
+
+doubleEven :: (Int, Int) -> Int
+doubleEven (n, index) 
+    | (rem index 2) /= 0 =
+        n 
+    | otherwise =
+        if m > 9 then
+            m - 9
+        else
+            m
+    where
+        m = n * 2
